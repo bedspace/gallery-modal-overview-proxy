@@ -13,6 +13,7 @@ app.use(morgan('dev'));
 app.use(morgan(':method :url :status :res[content-length] - :response-time MS'));
 
 app.use(express.static(__dirname + '/../client/dist'));
+app.use('/:id', express.static(__dirname + '/../client/dist'));
 
 app.use(bodyParser());
 
@@ -35,7 +36,7 @@ app.get('/rooms/related-listings', (req,res) => {
 });
 
 //BELOW IS GALLERY CONTAINER MODULE
-app.get('/images', (req,res) => {
+app.get('/images/:houseId', (req,res) => {
     apiProxy.web(req,res,({target: galleryContainerUrl}));
 });
 
