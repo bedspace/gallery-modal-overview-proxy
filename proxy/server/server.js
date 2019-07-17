@@ -12,12 +12,11 @@ const app = express();
 app.use(morgan('dev'));
 app.use(morgan(':method :url :status :res[content-length] - :response-time MS'));
 
-app.use(express.static(__dirname + '/../client/dist'));
 app.use('/:id', express.static(__dirname + '/../client/dist'));
 
 app.use(bodyParser());
 
-app.get('/rooms/bookings/listings', (req,res) => {
+app.get('/rooms/bookings/listings/:id', (req,res) => {
     apiProxy.web(req,res, {target: bookingsUrl});
 });
 
