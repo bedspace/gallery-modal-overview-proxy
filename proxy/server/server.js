@@ -30,7 +30,7 @@ app.get('/rooms/bookings/listing_dates', (req,res) => {
 
 
 //BELOW IS RELATED LISTINGS
-app.get('/rooms/related-listings', (req,res) => {
+app.get('/rooms/related-listings/:id', (req,res) => {
     apiProxy.web(req,res,({target: relatedListingsUrl}));
 });
 
